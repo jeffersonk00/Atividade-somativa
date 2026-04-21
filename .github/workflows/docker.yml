@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Build Docker Image
-      run: docker build -t atividade-devops .
+      run: docker build . --file Dockerfile --tag atividade-devops:$(date +%s)

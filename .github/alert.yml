@@ -11,21 +11,6 @@ jobs:
     steps:
       - name: Send Discord message
         run: |
-          curl -H "Content-Type: application/json" \
-          -d '{"content": "🚀 Novo push no repositório!"}' \
-          ${{ secrets.DISCORD_WEBHOOK }}name: Discord Alert
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  notify:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Send Discord message
-        run: |
-          curl -H "Content-Type: application/json" \
-          -d '{"content": "🚀 Novo push no repositório!"}' \
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "🚀 Novo commit enviado!"}' \
           ${{ secrets.DISCORD_WEBHOOK }}

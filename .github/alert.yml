@@ -9,8 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send Discord Notification
-        uses: Ilshidur/action-discord@master
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "🚀 Novo commit no main!"
+      - name: Test webhook
+        run: |
+          echo "Enviando mensagem..."
+          RESPONSE=$(curl -s -o response.txt -w "%{http_code}" \
+          -H "Content-Type: application/json" \
+          -d '{"content":"🚀 TESTE FINAL DISCORD"}' \
+          "${{ secrets.DISCORD_WEBHOOK }}")
+
+          echo "HTTP STATUS: $RESPONSE"
+          echo "Resposta:"
+          cat response.txt

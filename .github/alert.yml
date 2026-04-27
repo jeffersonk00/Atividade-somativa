@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Send Discord message
         run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "🚀 Novo commit enviado!"}' \
-          ${{ secrets.DISCORD_WEBHOOK }}
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"content":"🚀 Novo commit no main!"}' \
+          "${{ secrets.DISCORD_WEBHOOK }}"
